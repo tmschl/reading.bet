@@ -11,7 +11,8 @@
 import './App.css';
 import React from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
-import { SearchButton } from '../Button/Button';
+import { SearchButton } from '../SearchButton/SearchButton';
+import { BookList } from '../BookList/BookList';
 
  export class App extends React.Component {
   constructor(props) {
@@ -76,6 +77,9 @@ import { SearchButton } from '../Button/Button';
         <SearchBar onChange={this.onChange}/>
         <SearchButton onSubmit={this.search}/>
       </header>
+      <main>
+        <BookList bookState={this.state.books}/> 
+      </main>
     </div>
     );
   }
