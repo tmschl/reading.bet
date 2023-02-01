@@ -12,6 +12,7 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
     this.state = {
       userName: 'timmy duncan',
       searchInput : '',
+      searchResults: [],
       books : [{
         author: 'Leo Tolstoy',
         title : 'Anna Karenina',
@@ -54,10 +55,10 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
     GoogleBooks();
     this.state.books.find((book) => {
       if (book.title === this.state.searchInput) {
-        // console.log(book);
-        return book;
+        console.log(book);
+        this.state.searchResults.push(book);
+        console.log(this.state);
       } 
-      // console.log('not found');
     })
   }
 
@@ -70,7 +71,7 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
         <SearchButton onSubmit={this.search}/>
       </header>
       <main>
-        <BookList bookState={this.state.books}/> 
+        <BookList bookState={this.state.books} results={this.state.searchResults} /> 
       </main>
     </div>
     );
