@@ -1,18 +1,9 @@
-// receive an input
-// return a book
-// return an array of books
-// display the array of books
-// book title, author, edition *(estimated time of completion)
-// save and display the book selection from the array
-// remove the book selection from selection area
-// mock track time since book selected
-// query google books api for real books
-
 import './App.css';
 import React from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchButton } from '../SearchButton/SearchButton';
 import { BookList } from '../BookList/BookList';
+import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
 
  export class App extends React.Component {
   constructor(props) {
@@ -59,13 +50,14 @@ import { BookList } from '../BookList/BookList';
   }
 
   search () {
-    console.log(this.state.books)
+    // console.log(this.state.books)
+    GoogleBooks();
     this.state.books.find((book) => {
       if (book.title === this.state.searchInput) {
-        console.log(book);
+        // console.log(book);
         return book;
       } 
-      console.log('not found');
+      // console.log('not found');
     })
   }
 
