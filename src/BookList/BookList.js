@@ -23,7 +23,6 @@ export class BookList extends React.Component {
         )
       })
     }
-    console.log(bookData);
 
     return bookData;
   }

@@ -10,35 +10,16 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
     super(props);
   
     this.state = {
-      userName: 'timmy duncan',
+      user: {
+        id: 1,
+        name: 'timmy duncan',
+        avatar: '',
+        currentBook: '',
+        bookHistory: []
+      },
       searchInput : '',
       searchResults: [],
-      books : [{
-        author: 'Leo Tolstoy',
-        title : 'Anna Karenina',
-        edition: 'Modern Library',
-        id: 1
-      },{
-        author: 'Franz Kafka',
-        title : 'Amerika',
-        edition: 'New Directions',
-        id: 2
-      },{
-        author: 'Mrs. Dalloway',
-        title : 'Virginia Woolf',
-        edition: 'Penguins Classic',
-        id: 3
-      },{
-        author: 'Ta-Nehisi Coates',
-        title : 'Between the World and Me',
-        edition: 'Speigel & Grau',
-        id: 4
-      },{
-        author: 'Beyond Good and Evil',
-        title : 'Fredirich Nietzsche',
-        edition: 'Kaufman',
-        id: 5
-      }]
+      books : []
     }
 
     this.onChange = this.onChange.bind(this);
@@ -46,21 +27,12 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
   }
 
   onChange (e) {
-    console.log(e.target.value)
     this.setState({searchInput: e.target.value});
   }
 
   search () {
-    // console.log(this.state.books)
-    GoogleBooks();
-    this.state.books.find((book) => {
-      if (book.title === this.state.searchInput) {
-        console.log(book);
-        this.state.searchResults.push(book);
-        console.log(this.state);
-      } 
-    })
-  }
+    GoogleBooks(this.state.searchInput);
+   }
 
   render () {
     return (
@@ -78,3 +50,29 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
   }
 }
 
+// {
+//         author: 'Leo Tolstoy',
+//         title : 'Anna Karenina',
+//         edition: 'Modern Library',
+//         id: 1
+//       },{
+//         author: 'Franz Kafka',
+//         title : 'Amerika',
+//         edition: 'New Directions',
+//         id: 2
+//       },{
+//         author: 'Mrs. Dalloway',
+//         title : 'Virginia Woolf',
+//         edition: 'Penguins Classic',
+//         id: 3
+//       },{
+//         author: 'Ta-Nehisi Coates',
+//         title : 'Between the World and Me',
+//         edition: 'Speigel & Grau',
+//         id: 4
+//       },{
+//         author: 'Beyond Good and Evil',
+//         title : 'Fredirich Nietzsche',
+//         edition: 'Kaufman',
+//         id: 5
+// }
