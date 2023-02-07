@@ -3,7 +3,8 @@ import React from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { SearchButton } from '../SearchButton/SearchButton';
 import { BookList } from '../BookList/BookList';
-import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
+// import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
+
 
  export class App extends React.Component {
   constructor(props) {
@@ -23,16 +24,28 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
     }
 
     this.onChange = this.onChange.bind(this);
-    this.search = this.search.bind(this);
+    this.googleBooks = this.googleBooks.bind(this);
   }
 
   onChange (e) {
     this.setState({searchInput: e.target.value});
   }
 
-  search () {
-    GoogleBooks(this.state.searchInput);
-   }
+  googleBooks () {
+    const searchTerm = this.state.searchInput;
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${api_key}`)
+    .then(response => {
+        const books = response.json();
+        console.log(books.items);
+        console.log(books);
+        return books;
+      }).then(books => {
+        this.setState({searchResults: []});
+        this.state.searchResults.push(books.items);
+        console.log(this.state);
+        
+      });
+  }
 
   render () {
     return (
@@ -40,7 +53,7 @@ import { GoogleBooks } from '../GoogleBooks/GoogleBooks';
       <header className="App-header">
         <h1>reading.bet</h1>
         <SearchBar onChange={this.onChange}/>
-        <SearchButton onSubmit={this.search}/>
+        <SearchButton onSubmit={this.googleBooks}/>
       </header>
       <main>
         <BookList bookState={this.state.books} results={this.state.searchResults} /> 
