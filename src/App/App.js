@@ -7,13 +7,19 @@ import { BookList } from '../BookList/BookList';
 
 
 export function App(props) {
-  return <h1>Hello, {props.name}</h1>;
+  return (
+    <div className="app" >
+      <h1>Hello, {props.name}</h1>
+      <SearchBar />
+    </div>
+
+  );
 }
 
 //  export class App extends React.Component {
 //   constructor(props) {
 //     super(props);
-  
+
 //     this.state = {
 //       user: {
 //         id: 1,
@@ -45,7 +51,7 @@ export function App(props) {
 //       }).then(books => {
 //         this.state.searchResults.push(books.items)
 //       });
-      
+
 //   }
 
 //   render () {
@@ -55,4 +61,3 @@ export function App(props) {
 //     );
 //   }
 // }
-
