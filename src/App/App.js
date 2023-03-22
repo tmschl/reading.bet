@@ -41,18 +41,18 @@ export function App(props) {
 //     this.setState({searchInput: e.target.value});
 //   }
 
-//   googleBooks () {
-//     const searchTerm = this.state.searchInput;
+  // googleBooks () {
+  //   const searchTerm = this.state.searchInput;
 
-//     fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${api_key}`)
-//     .then(response => {
-//         const books = response.json();
-//         return books;
-//       }).then(books => {
-//         this.state.searchResults.push(books.items)
-//       });
+  //   fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchTerm}&key=${api_key}`)
+  //   .then(response => {
+  //       const books = response.json();
+  //       return books;
+  //     }).then(books => {
+  //       this.state.searchResults.push(books.items)
+  //     });
 
-//   }
+  // }
 
 //   render () {
 //     return (
