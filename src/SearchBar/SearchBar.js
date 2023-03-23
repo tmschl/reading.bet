@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react';
-import "./SearchBar.css"
+import { Api_Key } from '../Keys.js'
+import "./SearchBar.css";
 
 export function SearchBar() {
   const [searchParams, setSearchParams] = useState('');
@@ -36,8 +37,7 @@ export function SearchBar() {
   useEffect(() => {
     console.log('effect');
     if (!searchParams) return;
-    const api_key = 'AIzaSyA0UKouWSL-JZ6d7y-xwWgQAsgG1Uvd-6U';
-    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchParams}&key=${api_key}`)
+    fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchParams}&key=${Api_Key}`)
       .then(response => {
         const books = response.json();
         console.log(books);
