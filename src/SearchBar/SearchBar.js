@@ -16,27 +16,13 @@ export function SearchBar() {
     </li>
   );
 
-  function handleEnterKey(event) {
+  function handleEnterEvent(event) {
     event.preventDefault()
-    console.log(event.currentTarget.elements.searchText.value);
-    setSearchParams(event.currentTarget.elements);
+    setSearchParams(event.currentTarget.elements.searchText.value);
   }
 
-  function handleSearchButton(event) {
-    event.preventDefault();
-    console.log(searchParams);
-    setSearchParams(searchParams);
-  }
-
-  function handleKeyUp(event) {
-    event.preventDefault();
-    console.log(event.target.value);
-    setSearchParams(event.target.value);
-  }
-
-  useEffect(() => {
-    console.log('effect');
-    if (!searchParams) return;
+   useEffect(() => {
+    if (!searchParams) return setBookResults([]);
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchParams}&key=${Api_Key}`)
       .then(response => {
         const books = response.json();
@@ -52,12 +38,12 @@ export function SearchBar() {
 
   return (
     <div className="search" >
-      <form onSubmit={handleEnterKey}>
+      <form onSubmit={handleEnterEvent}>
         <div>
           <label>search up ur book bruv:</label>
-          <input id="searchText" type="text" onKeyUp={handleKeyUp} />
+          <input id="searchText" type="text" />
         </div>
-        <button onClick={handleSearchButton} type="search">search</button>
+        <button  type="search">search</button>
       </form>
       <ul>
         {listItems}
