@@ -10,12 +10,15 @@ export function SearchBar() {
   const listItems = bookResults.map(book =>
     <li key={book.id}>
       <p> {book.volumeInfo.title} by {book.volumeInfo.authors ? book.volumeInfo.authors[0] : ''}</p>
-      <button> add to bookshelf </button>
+      <button onClick={readingNow}>reading now</button>
       <p> {book.volumeInfo.description} </p>
       <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} />
     </li>
   );
 
+  function readingNow () {
+    console.log('sup lil homie')
+  }
   function handleEnterEvent(event) {
     event.preventDefault()
     setSearchParams(event.currentTarget.elements.searchText.value);
