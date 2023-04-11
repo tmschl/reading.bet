@@ -1,23 +1,15 @@
 import React from "react";
 import { useState, useEffect } from 'react';
 import { Api_Key } from '../Keys.js'
+import {SearchResults} from '../SearchResults/SearchResults.js';
 import "./SearchBar.css";
 
 export function SearchBar() {
   const [searchParams, setSearchParams] = useState('');
   const [bookResults, setBookResults] = useState([]);
 
-  const listItems = bookResults.map(book =>
-    <li key={book.id}>
-      <p> {book.volumeInfo.title} by {book.volumeInfo.authors ? book.volumeInfo.authors[0] : ''}</p>
-      <button onClick={readingNow}>reading now</button>
-      <p> {book.volumeInfo.description} </p>
-      <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} />
-    </li>
-  );
-
   function readingNow () {
-    console.log('sup lil homie')
+    console.log('lil homie')
   }
   function handleEnterEvent(event) {
     event.preventDefault()
@@ -49,7 +41,7 @@ export function SearchBar() {
         <button  type="search">search</button>
       </form>
       <ul>
-        {listItems}
+        <SearchResults searchResults={bookResults} />
       </ul>
     </div>
   )

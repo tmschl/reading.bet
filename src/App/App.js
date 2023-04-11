@@ -9,7 +9,11 @@ import { BookList } from '../BookList/BookList';
 export function App(props) {
   return (
     <div className="app" >
-      <h1>Hello, {props.name}</h1>
+      <header>
+        <div>user profile</div>
+      </header>
+      <h1>{props.name}</h1>
+
       <SearchBar />
     </div>
 
