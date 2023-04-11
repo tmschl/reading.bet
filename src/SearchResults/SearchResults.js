@@ -33,7 +33,7 @@ export function SearchResults (props) {
       <img src={book.volumeInfo.imageLinks ? book.volumeInfo.imageLinks.smallThumbnail : ''} />
     </li>
   );
-  console.log(searchResults);
+  
   return searchResults;
 } 
 

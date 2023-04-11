@@ -4,8 +4,5 @@ import './index.css';
 import { App } from './App/App';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-const element = <App
-  name="reading.bet"
-/>;
+const element = <App name="reading.bet" />;
 root.render(element);
-

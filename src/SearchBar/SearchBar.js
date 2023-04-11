@@ -7,10 +7,7 @@ import "./SearchBar.css";
 export function SearchBar() {
   const [searchParams, setSearchParams] = useState('');
   const [bookResults, setBookResults] = useState([]);
-
-  function readingNow () {
-    console.log('lil homie')
-  }
+  
   function handleEnterEvent(event) {
     event.preventDefault()
     setSearchParams(event.currentTarget.elements.searchText.value);
@@ -21,15 +18,12 @@ export function SearchBar() {
     fetch(`https://www.googleapis.com/books/v1/volumes?q=${searchParams}&key=${Api_Key}`)
       .then(response => {
         const books = response.json();
-        console.log(books);
         return books;
       }).then(books => {
         const booksResponse = books.items;
         setBookResults(booksResponse);
-        console.log(booksResponse);
       });
   }, [searchParams]);
-
 
   return (
     <div className="search" >
