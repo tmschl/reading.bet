@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
+import { Profile } from '../Profile/Profile';
 
 export function User () {
 	const [user, setUserState] = useState({
@@ -22,13 +23,16 @@ export function User () {
 
 	return (
 		<div className="user">
-			<form onSubmit={handleSubmit}>
+			<header>
+				{ user.isLoggedIn ? <Profile userInfo={ user } /> : "" }
+			</header>
+			<form onSubmit={handleSubmit} hidden={user.isLoggedIn}>
 				<label htmlFor="login">
 					Login
 					<input
 							id="username"
 							value={user.username}
-							placeholder="email"
+							placeholder="username"
 							onChange={(e) => setUserState({
 								...user, 
 								username: `${e.target.value}`
