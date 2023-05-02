@@ -4,7 +4,7 @@ import { Api_Key } from '../Keys.js'
 import {SearchResults} from '../SearchResults/SearchResults.js';
 import "./SearchBar.css";
 
-export function SearchBar() {
+export function SearchBar(props) {
   const [searchParams, setSearchParams] = useState('');
   const [bookResults, setBookResults] = useState([]);
   
@@ -35,7 +35,7 @@ export function SearchBar() {
         <button  type="search">search</button>
       </form>
       <ul>
-        <SearchResults searchResults={bookResults} />
+        <SearchResults userInfo={ props.userInfo } searchResults={bookResults} />
       </ul>
     </div>
   )

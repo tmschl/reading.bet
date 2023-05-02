@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { Profile } from '../Profile/Profile';
 
@@ -7,7 +7,10 @@ export function User () {
 		username: "",
 		password: "",
 		isLoggedIn: false,
-		readingNow: []
+		readingNow: [],
+		setReadingNow: function (bookTitle) {
+			this.readingNow.push(bookTitle);
+		}
 	});
 
 	const handleSubmit = (e) => {
@@ -23,8 +26,12 @@ export function User () {
 
 	return (
 		<div className="user">
+
 			<header>
-				{ user.isLoggedIn ? <Profile userInfo={ user } /> : "" }
+			<div>
+				hello {user.username} 
+			</div>
+				{/* <Profile userInfo={ user } /> */}
 			</header>
 			<form onSubmit={handleSubmit} hidden={user.isLoggedIn}>
 				<label htmlFor="login">
@@ -55,7 +62,7 @@ export function User () {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
-			{ user.isLoggedIn ? <SearchBar /> : "" }
+			{ user.isLoggedIn ? <SearchBar userInfo={ user } /> : "" }
 		</div>
 	);
 }
