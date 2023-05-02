@@ -31,7 +31,6 @@ export function User () {
 			<div>
 				hello {user.username} 
 			</div>
-				{/* <Profile userInfo={ user } /> */}
 			</header>
 			<form onSubmit={handleSubmit} hidden={user.isLoggedIn}>
 				<label htmlFor="login">
