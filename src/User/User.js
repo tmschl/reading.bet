@@ -1,8 +1,11 @@
 import { useState, useEffect } from 'react';
 import { SearchBar } from '../SearchBar/SearchBar';
 import { Profile } from '../Profile/Profile';
+import { Link, useNavigate } from "react-router-dom";
 
 export function User () {
+	const navigate = useNavigate();
+
 	const [user, setUserState] = useState({
 		username: "",
 		password: "",
@@ -15,13 +18,15 @@ export function User () {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(e, e.target[0].value, e.target[1].value);
+
 		setUserState({
 			...user,
 			username: `${e.target[0].value}`, 
   		password: `${e.target[1].value}`,
-			isLoggedIn: true
+			isLoggedIn: true 
 		})
+	
+			navigate('/search')
 	}
 
 	return (
@@ -61,7 +66,7 @@ export function User () {
 				</label>
 				<button type="submit">Submit</button>
 			</form>
-			{ user.isLoggedIn ? <SearchBar userInfo={ user } /> : "" }
+			{ user.isLoggedIn ?  <Link to="search" /> : "" }
 		</div>
 	);
 }
