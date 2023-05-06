@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from 'react';
-import { Api_Key } from '../Keys.js'
-import {SearchResults} from '../SearchResults/SearchResults.js';
+import { Api_Key } from '../Keys.js';
+import { SearchResults } from '../SearchResults/SearchResults.js';
 import "./SearchBar.css";
 
 export function SearchBar(props) {
