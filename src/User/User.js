@@ -3,7 +3,7 @@ import { SearchBar } from '../SearchBar/SearchBar';
 import { Profile } from '../Profile/Profile';
 import { Link, useNavigate } from "react-router-dom";
 
-export function User () {
+export function User (props) {
 	const navigate = useNavigate();
 
 	const [user, setUserState] = useState({
@@ -13,8 +13,10 @@ export function User () {
 		readingNow: [],
 		setReadingNow: function (bookTitle) {
 			this.readingNow.push(bookTitle);
-		}
+		},
+		setLoggedIn: props.setLoggedIn
 	});
+
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
@@ -64,9 +66,9 @@ export function User () {
 							})}
 							/>
 				</label>
-				<button type="submit">Submit</button>
+				<button type="submit" onClick={user.setLoggedIn} >Submit</button>
 			</form>
-			{ user.isLoggedIn ?  <Link to="search" /> : "" }
+			{/* { user.isLoggedIn ?  <Link to="search" /> : "" } */}
 		</div>
 	);
 }

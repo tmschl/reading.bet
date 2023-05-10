@@ -29,7 +29,7 @@ export function SearchBar(props) {
     <div className="search" >
       <form onSubmit={handleEnterEvent}>
         <div>
-          <label>search up ur book bruv:</label>
+          <label>find ur book bruv:</label>
           <input id="searchText" type="text" />
         </div>
         <button  type="search">search</button>
