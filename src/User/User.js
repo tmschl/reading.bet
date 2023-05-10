@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
-import { SearchBar } from '../SearchBar/SearchBar';
-import { Profile } from '../Profile/Profile';
-import { Link, useNavigate } from "react-router-dom";
+import { SearchBar } from '../SearchBar/SearchBar'
 
 export function User (props) {
-	const navigate = useNavigate();
 
 	const [user, setUserState] = useState({
 		username: "",
@@ -13,8 +10,7 @@ export function User (props) {
 		readingNow: [],
 		setReadingNow: function (bookTitle) {
 			this.readingNow.push(bookTitle);
-		},
-		setLoggedIn: props.setLoggedIn
+		}
 	});
 
 
@@ -28,7 +24,6 @@ export function User (props) {
 			isLoggedIn: true 
 		})
 	
-			navigate('/search')
 	}
 
 	return (
@@ -66,9 +61,9 @@ export function User (props) {
 							})}
 							/>
 				</label>
-				<button type="submit" onClick={user.setLoggedIn} >Submit</button>
+				<button type="submit" >Submit</button>
 			</form>
-			{/* { user.isLoggedIn ?  <Link to="search" /> : "" } */}
+			{ user.isLoggedIn ? <SearchBar />  : ''}
 		</div>
 	);
 }
